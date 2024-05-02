@@ -1,2 +1,0 @@
-# DAS
- Doctor Automation System
