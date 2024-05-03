@@ -53,19 +53,9 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['d_
     <body>
 	
 		<!-- Preloader -->
-        <div class="preloader">
-            <div class="loader">
-                <div class="loader-outter"></div>
-                <div class="loader-inner"></div>
-
-                <div class="indicator"> 
-                    <svg width="16px" height="12px">
-                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                    </svg>
-                </div>
-            </div>
-        </div>
+		<?php
+			include("../templates/preloader.php");
+		?>
         <!-- End Preloader -->
 		
 		<!-- Header Area -->
@@ -152,44 +142,9 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['d_
 		</header>
 
         <!--Login Screen -->
-        <div class="container margin-5rem">
-			<div class="row justify-content-center mt-5">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header text-center">Giriş Yap</div>
-						<div class="card-body">
-							<form action="login.php?action=login" method="POST">
-								<div class="form-group">
-									<label for="email">E-posta Adresi:</label>
-									<input type="email" class="form-control" id="email" name="email" required>
-								</div>
-								<div class="form-group">
-									<label for="password">Şifre:</label>
-									<input type="password" class="form-control" id="password" name="password" required>
-								</div>
-
-								<?php
-								//Mesaj bölümü 
-									if (isset($msg)) {
-										echo '<div class="alert ';
-										echo $msg["type"];
-										echo '" role="alert">';
-										echo $msg["text"];
-										echo '</div>';
-
-										echo '<script>history.pushState({}, "", "login.php");</script>';
-									}else{
-										echo "<br>";
-									}
-								?>
-								<button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
-								<br>			
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php
+			include("../templates/login.php");
+		?>
 		<!--login screen-->
 
 		<?php
