@@ -1,3 +1,9 @@
+<?php
+
+include("logincheck.php");
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -8,83 +14,16 @@
     <body>
 	
 		<!-- Preloader -->
-        <div class="preloader">
-            <div class="loader">
-                <div class="loader-outter"></div>
-                <div class="loader-inner"></div>
-
-                <div class="indicator"> 
-                    <svg width="16px" height="12px">
-                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-                    </svg>
-                </div>
-            </div>
-        </div>
+        <?php
+			include("../templates/preloader.php");
+		?>
         <!-- End Preloader -->
 
-		<!-- Header Area -->
-		<header class="header" >
-		
-			<!-- Header Inner -->
-			<div class="header-inner">
-				<div class="container">
-					<div class="inner">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-12">
-								<!-- Start Logo -->
-								<div class="logo">
-									<a href="/index.html"><img src="/img/logo.png" alt="#"></a>
-								</div>
-								<!-- End Logo -->
-								<!-- Mobile Nav -->
-								<div class="mobile-nav"></div>
-								<!-- End Mobile Nav -->
-							</div>
-							<div class="col-lg-7 col-md-9 col-12">
-								<!-- Main Menu -->
-								<div class="main-menu">
-									<nav class="navigation">
-										<ul class="nav menu">
-											<li class="active"><a href="/#">anasayfa </a></li>
-											<li><a href="/doktorlar.php">doktorlar </a></li>
-											<li ><a href="/doktorlar">randevularım </a></li>
-											<li  ><div style="margin-top: 20px;">
-                                           <button class="btn btn-primary">çıkış yap</button>
-                                            </div> </li> 
-											
-										
-									</nav>
-								</div>
-								<!--/ End Main Menu -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/ End Header Inner -->
-		</header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<!-- Nav -->
+		<?php
+			include("./nav.php");
+		?>
+        <!-- End Nav -->
 
 <?php
 // Veritabanı bağlantısı
