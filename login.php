@@ -13,24 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Veritabanı bağlantısını yapın
-    // Örnek olarak, MySQL kullanarak bir bağlantı yapalım
-    $servername = "localhost";
-    $username = "root";
-    $password_db = "";
-    $dbname = "doktorlar";
-
-    // Bağlantı oluştur
-    $conn = new mysqli($servername, $username, $password_db, $dbname);
-
-    // Bağlantıyı kontrol et
-    if ($conn->connect_error) {
-        die("Bağlantı hatası: " . $conn->connect_error);
-    }
+    
+    include("database.php");
 
     // Veritabanında kullanıcıyı sorgula
-    $sql = "SELECT * FROM doktorlar WHERE email = '$email' AND password = '$password'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM doctors WHERE email = '$email' AND password = '$password'";
+    $result = $database->query($sql);
 
     if ($result->num_rows > 0) {
         // Oturumu başlat
@@ -49,6 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
     }
 
-    $conn->close();
+    $database->close();
 }
 ?>
