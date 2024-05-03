@@ -9,8 +9,6 @@ $result = $database->query($sql);
 $result1 = $database->query($sql1)
 ?>
 
-
-
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -33,7 +31,6 @@ $result1 = $database->query($sql1)
         <!-- End Nav -->
 
         <!--arama alanı -->
-        
         <div class="container margin-5rem">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
@@ -75,11 +72,7 @@ $result1 = $database->query($sql1)
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-        
-    
-    </div>
+
 		<?php
 			include("../templates/importfooter.php");
 			include("../templates/importjs.php");
