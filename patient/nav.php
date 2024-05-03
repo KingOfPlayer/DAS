@@ -1,12 +1,16 @@
 <?php
 	include("../templates/navgenerate.php");
-	$test = "
-		<div class=\"col-lg-2 col-12\">
-				<a href=\"/appointment.html\" class=\"btn\">randevu al</a>
-		</div>
-	";
+	
+    if(isset($_SESSION['p_email'])) {
+		addLogoToNav("index.php");
+		addToNAV("
+			<div class=\"col-lg-2 col-12\">
+					<h3>Logined</h3>
+			</div>
+		");
+    }else{
+		addLogoToNav("/index.php");
+	}
 			
-	addLogoToNav("index.php");
-	addToNAV($test);
 	dumpNav();
 ?>
