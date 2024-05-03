@@ -4,7 +4,7 @@ $navbegin = "
 	<div class=\"header-inner\">
 		<div class=\"container\">
 			<div class=\"inner\">
-				<div class=\"row justify-content-between align-items-center padding-tb-20px\">
+				<div class=\"d-flex justify-content-between align-items-center padding-tb-20px\">
 ";
 
 $navend = "					

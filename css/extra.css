@@ -12,3 +12,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.header .nav li a {
+    padding: 10px 10px;
+}

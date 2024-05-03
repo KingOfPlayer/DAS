@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
 
 //echo var_dump($_GET);
 //echo var_dump($_SESSION);

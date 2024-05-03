@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+    }
 
     // Doktor zaten oturum açmamışsa giriş sayfasına yönlendir
     if(!isset($_SESSION['a_email'])) {
