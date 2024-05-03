@@ -19,6 +19,6 @@
 
 .nice-select .list {
     max-height: 15rem;
-    overflow-y: overlay;
+    overflow: scroll;
 }
 

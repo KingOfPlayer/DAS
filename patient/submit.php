@@ -45,11 +45,11 @@ include("logincheck.php");
                 join doctor_degree on doctors.doctor_degree_id=doctor_degree.id    
                 WHERE das.city.id = $sehir and doctor_specialty.id= $doctor_specialty";
         $result = $database->query($sql);
+            echo "<div class='container margin-tb-5rem' >";
 
         // Sonucu ekrana yazdır
         if ($result->num_rows > 0) {
     
-            echo "<div class='container'>";
             echo "<p>";
             while($row = $result->fetch_assoc()) {
                 echo $row['name'] . " " . $row['surname'] . " - " . $row['doctor_specialty_name'] ." - ". $row['doctor_degree_name'];
@@ -58,15 +58,16 @@ include("logincheck.php");
         
             }
             echo "</p>";
-            echo "</div>";
    
     
         } else {
     
-            echo "<div class='alert alert-warning'>";
-            echo "<div class='alert alert-warning' role='alert'>Uygun doktor bulunamadı.</div>"; //alert
+            echo "<div>";
+            echo "<div class='alert alert-warning' role='alert'>Uygun doktor bulunamadı.</div></div>"; //alert
   
         }
+            echo "</div>";
+
         ?>
 
 		<?php
