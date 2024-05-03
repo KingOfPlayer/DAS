@@ -14,7 +14,9 @@ if ($conn->connect_error) {
 
 // Şehirleri veritabanından al
 $sql = "SELECT * FROM city";
+$sql1= "select * from doctor_specialty";
 $result = $conn->query($sql);
+$result1 = $conn->query($sql1)
 ?>
 
 
@@ -88,27 +90,47 @@ $result = $conn->query($sql);
 
         <!--arama alanı -->
         
-        
-        
         <div class="container margin-5rem">
-			<div class="row justify-content-center mt-5">
-            <div>
-           
-        <form action="submit.php" method="post">
-            <label for="sehir">  Şehir Seçin:   </label>
-            <select id="sehir" name="sehir">
-                <?php
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
-                    }
-                } else {
-                    echo "<option value='-1'>Veri bulunamadı</option>";
-                }
-                ?>
-            </select>
-            <input class="btn btn-primary" type="submit" value="Gönder">
-        </form>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form action="submit.php" method="post">
+                <div class="form-row align-items-center">
+                    <div class="col">
+                        <label for="sehir" style="margin-bottom: 10px;">Şehir Seçin:</label>
+                        <select class="form-control" id="sehir" name="sehir">
+                            <?php
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                }
+                            } else {
+                                echo "<option value='-1'>Veri bulunamadı</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="degree">Derece Seçin:</label>
+                        <select class="form-control" id="degree" name="degree">
+                            <?php
+                            if ($result1->num_rows > 0) {
+                                while($row = $result1->fetch_assoc()) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                }
+                            } else {
+                                echo "<option value='-1'>Veri bulunamadı</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary mt-3">Gönder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     </div>
         
         
