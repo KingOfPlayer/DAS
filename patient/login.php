@@ -152,7 +152,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_
 		</header>
 
         <!--Login Screen -->
-        <div class="container">
+        <div class="container margin-5rem">
 			<div class="row justify-content-center mt-5">
 				<div class="col-md-6">
 					<div class="card">
@@ -182,16 +182,9 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_
 										echo "<br>";
 									}
 								?>
-
 								<button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
 								<br>			
 							</form>
-							<br>
-							<form action="logout.php" method="POST">
-								 <button class="btn btn-primary btn-block" type="submit">Oturumu Kapat</button>
-								 </form>
-                        
-
 						</div>
 					</div>
 				</div>
