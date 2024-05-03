@@ -13,15 +13,19 @@ include("logincheck.php");
     </head>
     <body>
 	
-		<?php
+		<!-- Preloader -->
+        <?php
 			include("../templates/preloader.php");
 		?>
+        <!-- End Preloader -->
 		
 		<!-- Get Pro Button -->
 		
+		<!-- Nav -->
 		<?php
 			include("./nav.php");
 		?>
+        <!-- End Nav -->
 
         <!--Login Screen -->
         <div class="container margin-tb-5rem">

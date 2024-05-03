@@ -1,6 +1,8 @@
 <?php
 	include("../templates/navgenerate.php");
 
+	session_start();
+
 	if(isset($_SESSION['p_email'])) {
 		addLogoToNav("index.php");
 		addToNAV("

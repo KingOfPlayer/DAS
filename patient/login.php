@@ -51,13 +51,17 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_
 		?>
     </head>
     <body>
-		<?php
+		<!-- Preloader -->
+        <?php
 			include("../templates/preloader.php");
 		?>
+        <!-- End Preloader -->
 		
+		<!-- Nav -->
 		<?php
 			include("./nav.php");
 		?>
+        <!-- End Nav -->
 
         <!--Login Screen -->
 		<?php

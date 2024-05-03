@@ -58,9 +58,11 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['d_
 		?>
         <!-- End Preloader -->
 		
+		<!-- Nav -->
 		<?php
 			include("./nav.php");
 		?>
+        <!-- End Nav -->
 
         <!--Login Screen -->
 		<?php
