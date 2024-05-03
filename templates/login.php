@@ -1,4 +1,4 @@
-<div class="container margin-5rem">
+<div class="container margin-tb-5rem">
 	<div class="row justify-content-center mt-5">
 		<div class="col-md-6">
 			<div class="card">
@@ -30,7 +30,7 @@
 								echo "<br>";
 							}
 						?>
-						<button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+						<button type="submit" class="btn btn-primary btn-block w-100">Giriş Yap</button>
 						<br>			
 					</form>
 				</div>

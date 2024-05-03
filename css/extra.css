@@ -1,4 +1,14 @@
-.margin-5rem {
+.margin-tb-5rem {
     margin-top: 5rem;
     margin-bottom: 5rem;
+}
+
+.margin-tb-20px {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.padding-tb-20px {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
