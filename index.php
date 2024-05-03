@@ -306,59 +306,6 @@
 		</section>
 		<!--/ End Feautes -->
 		
-		<!-- Start Fun-facts -->
-		<div id="fun-facts" class="fun-facts section overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-home"></i>
-							<div class="content">
-								<span class="counter">300</span>
-								<p>hastane odası</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-user-alt-3"></i>
-							<div class="content">
-								<span class="counter">40</span>
-								<p>uzman doktorlar</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont-simple-smile"></i>
-							<div class="content">
-								<span class="counter">6042</span>
-								<p>mutlu hastalar</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-table"></i>
-							<div class="content">
-								<span class="counter">42</span>
-								<p>yıllık uzman deneyim</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Fun-facts -->
-		
 		<!-- Start Why choose -->
 		<section class="why-choose section" >
 			<div class="container">
@@ -421,25 +368,6 @@
 			</div>
 		</section>
 		<!--/ End Why choose -->
-		
-		<!-- Start Call to action -->
-		<section class="call-action overlay" data-stellar-background-ratio="0.5">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-12">
-						<div class="content">
-							<h2>acil yardıma mı ihtiyacınız var bizi arayın @2326542352 </h2>
-						
-							<div class="button">
-								<a href="#" class="btn">bize ulaşın</a>
-								<a href="#" class="btn second">randevu alın<i class="fa fa-long-arrow-right"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--/ End Call to action -->
 		
 		<!-- Start portfolio -->
 		<section class="portfolio section" >

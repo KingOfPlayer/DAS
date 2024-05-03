@@ -16,3 +16,9 @@
 .header .nav li a {
     padding: 10px 10px;
 }
+
+.nice-select .list {
+    max-height: 15rem;
+    overflow-y: overlay;
+}
+
