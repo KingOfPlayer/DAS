@@ -40,7 +40,7 @@
 		
 		<!-- Medipro CSS -->
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
 		
     </head>
