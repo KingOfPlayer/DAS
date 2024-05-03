@@ -14,7 +14,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['a_
 		
 		include ('../database.php');
 
-		$sql = "SELECT * FROM doctors WHERE email = '$email' AND password = '$password'";
+		$sql = "SELECT * FROM admins WHERE email = '$email' AND password = '$password'";
 		$result = $database->query($sql);
 
 		if ($result->num_rows > 0) {

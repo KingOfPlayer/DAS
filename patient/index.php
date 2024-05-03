@@ -104,7 +104,7 @@ include("logincheck.php");
 		</header>
 
         <!--Login Screen -->
-        <div class="container">
+        <div class="container margin-5rem">
 			<div class="row justify-content-center mt-5">
 				<div class="col-md-6">
 					<div class="card">
