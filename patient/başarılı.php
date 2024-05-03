@@ -110,8 +110,8 @@ $result1 = $conn->query($sql1)
                         </select>
                     </div>
                     <div class="col">
-                        <label for="degree">Derece Seçin:</label>
-                        <select class="form-control" id="degree" name="degree">
+                        <label for="doctor_specialty">uzmanlık:</label>
+                        <select class="form-control" id="doctor_specialty" name="doctor_specialty">
                             <?php
                             if ($result1->num_rows > 0) {
                                 while($row = $result1->fetch_assoc()) {
