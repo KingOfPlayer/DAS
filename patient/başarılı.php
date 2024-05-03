@@ -90,7 +90,7 @@ $result1 = $conn->query($sql1)
 
         <!--arama alanı -->
         
-        <div class="container margin-5rem">
+        <div class="container margin-tb-5rem">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
             <form action="submit.php" method="post">

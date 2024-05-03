@@ -26,7 +26,7 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12">
 										<ul>
-											<li><a href="/#"><i class="fa fa-caret-right" aria-hidden="true"></i>anasayfa</a></li>
+											<li><a href="/index.php"><i class="fa fa-caret-right" aria-hidden="true"></i>Anasayfa</a></li>
 											<li><a href="/#"><i class="fa fa-caret-right" aria-hidden="true"></i>hakkımzda</a></li>
 											<li><a href="/#"><i class="fa fa-caret-right" aria-hidden="true"></i>hizmetler</a></li>
 											<li><a href="/#"><i class="fa fa-caret-right" aria-hidden="true"></i>vakalar</a></li>
