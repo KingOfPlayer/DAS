@@ -36,7 +36,7 @@ $result1 = $database->query($sql1)
                 <div class="col-md-6">
                     <form action="submit.php" method="post">
                         <div class="form-row align-items-center">
-                            <div class="col">
+                            <div style="width: 200px; height: 200px; overflow: overlay;" class="col">
                                 <label for="sehir" style="margin-bottom: 10px;">Şehir Seçin:</label>
                                 <select class="form-control" id="sehir" name="sehir">
                                     <?php
@@ -50,9 +50,9 @@ $result1 = $database->query($sql1)
                                     ?>
                                 </select>
                             </div>
-                            <div class="col">
+                            <div style="width: 200px; height: 200px; overflow: overlay;" class="col">
                                 <label for="doctor_specialty">uzmanlık:</label>
-                                <select class="form-control" id="doctor_specialty" name="doctor_specialty">
+                                <select  class="form-control" id="doctor_specialty" name="doctor_specialty">
                                     <?php
                                     if ($result1->num_rows > 0) {
                                         while($row = $result1->fetch_assoc()) {
