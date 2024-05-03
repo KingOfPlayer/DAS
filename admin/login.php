@@ -2,22 +2,19 @@
 
 session_start();
 
-    // Doktor zaten oturum açmamışsa giriş sayfasına yönlendir veya çıkış işlemi varsa devam et
-if(isset($_SESSION['a_email']) && isset($_GET['action']) && $_GET['action'] != "logout") {
-    header("Location: index.php");
-    die();
-}
+//echo var_dump($_GET);
+//echo var_dump($_SESSION);
 
-if(isset($_GET['action'])){
+if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['a_email'])) {
 	//Login aksiyonu
-	if ($_GET['action'] == "login") {
+	if(!isset($_SESSION['a_email'])){
 		// E-posta ve şifre al
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		
-		include $_SERVER['DOCUMENT_ROOT'].'/database.php';
+		include ('../database.php');
 
-		$sql = "SELECT * FROM admins WHERE email = '$email' AND password = '$password'";
+		$sql = "SELECT * FROM doctors WHERE email = '$email' AND password = '$password'";
 		$result = $database->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -29,12 +26,19 @@ if(isset($_GET['action'])){
 			//Mesaj gönder
 			$msg = array("type"=>"alert-danger","text"=>"E-posta veya şifre hatalı.");
 		}
-	//Logout aksiyonu
-	}else if($_GET['action'] == "logout"){
-		unset($_SESSION['a_email']);
-		header("Location: login.php");
+	} else {
+		// Zaten giriş yapılmış 
+		header("Location: index.php");
 		die();
 	}
+} else if(isset($_GET['action']) && $_GET['action'] == "logout" && isset($_SESSION['a_email'])){
+	//Logout aksiyonu
+	unset($_SESSION['a_email']);
+	header("Location: login.php");
+	die();
+} else if(isset($_SESSION['a_email'])){
+	header("Location: index.php");
+	die();
 }
 ?>
 
