@@ -36,15 +36,15 @@ include("../templates/logincheck.php");
 
         // Doktorları veritabanından al ve uygun olanları filtrele
         $sql = "SELECT 
-        das.doctors.*,das.city.name AS 'city_name',doctor_specialty.name AS 'doctor_specialty_name',doctor_degree.name AS doctor_degree_name
+        das.doctors.*,das.citys.name AS 'city_name',doctor_specialtys.name AS 'doctor_specialty_name',doctor_degrees.name AS doctor_degree_name
         FROM
         das.doctors
             JOIN
-        das.city ON das.doctors.city_id = city.id
+        das.citys ON das.doctors.city_id = citys.id
             JOIN
-        doctor_specialty ON doctors.doctor_specialty_id = doctor_specialty.id 
-                join doctor_degree on doctors.doctor_degree_id=doctor_degree.id    
-                WHERE das.city.id = $sehir and doctor_specialty.id= $doctor_specialty";
+        doctor_specialtys ON doctors.doctor_specialty_id = doctor_specialtys.id 
+                join doctor_degrees on doctors.doctor_degree_id=doctor_degrees.id    
+                WHERE das.citys.id = $sehir and doctor_specialtys.id= $doctor_specialty";
         $result = $database->query($sql);
             echo "<div class='container margin-tb-5rem' >";
 
