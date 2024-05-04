@@ -1,45 +1,12 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-//echo var_dump($_GET);
-//echo var_dump($_SESSION);
+$session_text = "p_email";
+$mode = 0;
+$page = "index.php";
 
-if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_email'])) {
-	//Login aksiyonu
-	if(!isset($_SESSION['p_email'])){
-		// E-posta ve şifre al
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-		
-		include ('../database.php');
+$database_table_name = "patients";
+include("../templates/login.php");
 
-		$sql = "SELECT * FROM patients WHERE email = '$email' AND password = '$password'";
-		$result = $database->query($sql);
-
-		if ($result->num_rows > 0) {
-			// Oturumu başlat
-			$_SESSION['p_email'] = $email;
-			header("Location: index.php");
-			die();
-		} else {
-			//Mesaj gönder
-			$msg = array("type"=>"alert-danger","text"=>"E-posta veya şifre hatalı.");
-		}
-	} else {
-		// Zaten giriş yapılmış 
-		header("Location: index.php");
-		die();
-	}
-} else if(isset($_GET['action']) && $_GET['action'] == "logout" && isset($_SESSION['p_email'])){
-	//Logout aksiyonu
-	unset($_SESSION['p_email']);
-	header("Location: login.php");
-	die();
-} else if(isset($_SESSION['p_email'])){
-	header("Location: index.php");
-	die();
-}
+include("../templates/logincheck.php");
 ?>
 
 
@@ -65,7 +32,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_
 
         <!--Login Screen -->
 		<?php
-			include("../templates/login.php");
+			include("../templates/logincontainer.php");
 			printLogin("Hasta","Hasta Olarak Giriş Yap");
 		?>
 		<!--login screen-->

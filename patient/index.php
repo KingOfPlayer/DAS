@@ -1,6 +1,7 @@
 <?php
 
-include("logincheck.php");
+$session_text = "p_email";
+include("../templates/logincheck.php");
 
 ?>
 

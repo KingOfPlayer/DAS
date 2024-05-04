@@ -1,5 +1,12 @@
 <?php
 
+$session_text = "p_email";
+include("../templates/logincheck.php");
+
+?>
+
+<?php
+
 include("../database.php");
 
 // Şehirleri veritabanından al

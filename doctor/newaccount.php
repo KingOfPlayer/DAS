@@ -1,8 +1,9 @@
 <?php
-
-$session_text = "a_email";
+// Eğer dosya doktor,hasta,admindeyse bunu ekle
+$session_text = "d_email";
+$mode = 0;
+$page = "index.php";
 include("../templates/logincheck.php");
-
 ?>
 
 <!doctype html>
@@ -19,22 +20,14 @@ include("../templates/logincheck.php");
 			include("../templates/preloader.php");
 		?>
         <!-- End Preloader -->
-		
-        <!-- Nav -->
+
+		<!-- Nav -->
 		<?php
 			include("./nav.php");
 		?>
         <!-- End Nav -->
 
-        <div class="container margin-tb-5rem">
-			<div class="row justify-content-center mt-5">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header text-center">Hoş Geldiniz</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<!-- Buradan Başla -->
 
 		<?php
 			include("../templates/importfooter.php");
