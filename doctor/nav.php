@@ -7,11 +7,14 @@
 
     if(isset($_SESSION['d_email'])) {
 		addLogoToNav("index.php");
-		/*addToNAV("
-			<div class=\"col-lg-2 col-12\">
-					<h3>Logined</h3>
+		addToNAV("
+			<div class=\"main-menu\">
+				<nav class=\"navigation\">
+					<ul class=\"nav menu\">
+						<li ><a href=\"./appointments.php\">Randevularım</a></li>
+				</nav>
 			</div>
-		");*/
+		");
 
 		addToNAV("
 			<div class=\"col-lg-2 col-12\">
