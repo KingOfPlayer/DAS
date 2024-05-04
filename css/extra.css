@@ -19,10 +19,16 @@
 
 .nice-select .list {
     max-height: 15rem;
-    overflow: scroll;
+    min-width: 100%;
+    overflow: auto;
 }
 
-.header .nav li .dropdown{
+.header .nav li .dropdown {
     top: auto;
 }
 
+.nice-select {
+    height: 32px;
+    font-size: 1rem;
+    line-height: 24px;
+}

@@ -28,6 +28,9 @@ include("../templates/logincheck.php");
         <!-- End Nav -->
 
 		<!-- Buradan Başla -->
+		<div class="container">
+			
+		</div>
 
 		<?php
 			include("../templates/importfooter.php");

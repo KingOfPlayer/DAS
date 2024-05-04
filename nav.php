@@ -19,7 +19,7 @@
 	");*/
 
 	addToNAV("
-		<div class=\"col-lg-3 col-12 d-flex\">
+		<div class=\"d-flex\">
 			<a href=\"./patient/login.php\" class=\"btn btn-primary btn-block text-light me-3\">Hasta Girişi</a>
 			<a href=\"./doctor/login.php\" class=\"btn btn-primary btn-block text-light me-3\">Doktor Girişi</a>
 		</div>

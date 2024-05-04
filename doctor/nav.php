@@ -20,6 +20,16 @@
 		");
     }else{
 		addLogoToNav("/index.php");
+		$splited_url = explode("/",$_SERVER['REQUEST_URI']);
+		$file_name = end($splited_url);
+
+		if($file_name == "newaccount.php"){
+			addToNAV("
+				<div class=\"col-lg-2 col-12\">
+					<a href=\".\login.php\" class=\"btn btn-primary btn-block text-light\">Giriş Yap</a>
+				</div>
+			");
+		}
 	}
 			
 	printNav();

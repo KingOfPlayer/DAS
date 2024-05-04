@@ -10,8 +10,8 @@ include("../templates/logincheck.php");
 include("../database.php");
 
 // Şehirleri veritabanından al
-$sql = "SELECT * FROM city";
-$sql1= "select * from doctor_specialty";
+$sql = "SELECT * FROM citys";
+$sql1= "select * from doctor_specialtys";
 $result = $database->query($sql);
 $result1 = $database->query($sql1)
 ?>
@@ -45,29 +45,29 @@ $result1 = $database->query($sql1)
                         <div class="form-row align-items-center">
                             <div class="col">
                                 <label for="sehir" style="margin-bottom: 10px;">Şehir Seçin:</label>
-                                <select class="d-flex align-items-center" style ="display: none !important;" id="sehir" name="sehir">
+                                <select class="d-flex align-items-center" style="display: none !important;" id="sehir" name="sehir">
                                     <?php
-                                    if ($result->num_rows > 0) {
-                                        while($row = $result->fetch_assoc()) {
-                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        if ($result->num_rows > 0) {
+                                            while($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value='-1'>Veri bulunamadı</option>";
                                         }
-                                    } else {
-                                        echo "<option value='-1'>Veri bulunamadı</option>";
-                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="doctor_specialty">uzmanlık:</label>
-                                <select class="d-flex align-items-center" style ="display: none !important;" id="doctor_specialty" name="doctor_specialty">
+                                <select class="d-flex align-items-center" style="display: none !important;" id="doctor_specialty" name="doctor_specialty">
                                     <?php
-                                    if ($result1->num_rows > 0) {
-                                        while($row = $result1->fetch_assoc()) {
-                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        if ($result1->num_rows > 0) {
+                                            while($row = $result1->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value='-1'>Veri bulunamadı</option>";
                                         }
-                                    } else {
-                                        echo "<option value='-1'>Veri bulunamadı</option>";
-                                    }
                                     ?>
                                 </select>
                             </div>

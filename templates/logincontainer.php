@@ -17,11 +17,11 @@ function printLogin($login_type,$header_text = null){
 						<div class=\"card-body\">
 							<form action=\"login.php?action=login\" method=\"POST\">
 								<div class=\"form-group mb-3\">
-									<label for=\"email\">E-posta Adresi:</label>
+									<label for=\"email\">E-posta Adresi</label>
 									<input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" required>
 								</div>
 								<div class=\"form-group mb-3\">
-									<label for=\"password\">Şifre:</label>
+									<label for=\"password\">Şifre</label>
 									<input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" required>
 								</div>
 	";
