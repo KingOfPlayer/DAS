@@ -42,7 +42,7 @@ include("./nav.php");
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center">Hoş Geldiniz</div>
+                
                 <div class="card-body">
                     <div class="appointment-info">
                         <?php
@@ -76,6 +76,9 @@ include("./nav.php");
                         } else {
                             // Kayıt bulunamadı
                             echo "<p>Randevu kaydınız bulunamadı.</p>";
+                            echo "<div>";
+                            echo "<a href='başarılı.php' class='btn'>randevu alın </a>";
+                            echo " </div>";
                         }
                         ?>
                     </div>
