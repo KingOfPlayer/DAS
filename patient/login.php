@@ -66,6 +66,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['p_
         <!--Login Screen -->
 		<?php
 			include("../templates/login.php");
+			printLogin("Hasta","Hasta Olarak Giriş Yap");
 		?>
 		<!--login screen-->
 

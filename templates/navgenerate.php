@@ -31,7 +31,7 @@ function addToNav($element){
 	$nav .= $element;
 }
 
-function dumpNav(){
+function printNav(){
 	global $navbegin,$nav,$navend;
 	echo $navbegin;
 	echo $nav;

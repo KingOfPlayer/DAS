@@ -69,6 +69,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['a_
         <!--Login Screen -->
 		<?php
 			include("../templates/login.php");
+			printLogin("Admin");
 		?>
 		<!--login screen-->
 

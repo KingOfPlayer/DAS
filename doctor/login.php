@@ -42,6 +42,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['d_
 	header("Location: index.php");
 	die();
 }
+
 ?>
 
 
@@ -69,6 +70,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login" && !isset($_SESSION['d_
         <!--Login Screen -->
 		<?php
 			include("../templates/login.php");
+			printLogin("Doktor","Doktor Olarak Giriş Yap");
 		?>
 		<!--login screen-->
 

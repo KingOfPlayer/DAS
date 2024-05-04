@@ -36,5 +36,5 @@
 		addLogoToNav("/index.php");
 	}
 			
-	dumpNav();
+	printNav();
 ?>
