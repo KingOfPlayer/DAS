@@ -61,7 +61,7 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 								<p class=\"card-text\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
 								<p>Unvanı: " . $row['degree_name'] . "</p>
 								<p>En Yakın Randevu: " . $row['nearest_date'] . "</p>
-								<a href=\"#\" class=\"btn btn-primary w-100\">Randevu al</a>
+								<a href=\"getdoctorappointments.php?action=search&id=".$row['id']."\" class=\"btn btn-primary w-100 text-light\">Randevu al</a>
 							</div>
 						</div>
 					</div>";

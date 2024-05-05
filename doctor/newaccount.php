@@ -111,7 +111,7 @@
 									<div class="row">
 										<div class="form-group pb-3 px-3 ps-3 col-sm">
 											<label for="phone_number" class="ps-3">Telefon Numarası</label>
-											<input type="text" class="form-control px-3" id="phone_number" name="phone_number" title="Telefon Numarası giriniz" pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}" required>
+											<input type="text" class="form-control px-3" id="phone_number" name="phone_number" title="Telefon Numarası giriniz" pattern="(\+)?(()?(0-9){3}())?(-\s\.)?(0-9){3}(-\s\.)?(0-9){4,6}" required>
 										</div>
 									</div>
 									<div class="row">

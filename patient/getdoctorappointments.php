@@ -20,63 +20,34 @@ function getImg($imguid,$gender){
 
 if (isset($_GET['action']) && $_GET['action'] == "search") {
 	
-	echo var_dump($_POST);
+	echo var_dump($_GET);
 
-	/*
-	// Veritabanına bağlantıyı sağlayın (bu kısmı sizin bağlantı yönteminize göre güncelleyin)
+	$id = $_GET["id"];
 
 	// Sorguyu hazırla
-	$sql = "SELECT 
-		doctors.*, citys.name AS 'city_name', doctor_specialtys.name AS 'specialty_name', doctor_degrees.name AS 'degree_name' 
-		FROM
-		doctors
-		JOIN
-		citys ON doctors.city_id = citys.id
-		JOIN
-		doctor_specialtys ON doctors.doctor_specialty_id = doctor_specialtys.id 
-		JOIN
-		doctor_degrees ON doctors.doctor_degree_id = doctor_degrees.id
-	
-		WHERE citys.id = $sehir AND doctor_specialtys.id = $doctor_specialty";
+	$sql = "SELECT * FROM das.available_appointments WHERE doctor_id = $id";
 
 	try{
 		// Sorguyu çalıştır
-		$result = $database->query($sql);
-		if ($result->num_rows > 0) {
-	
-			while($row = $result->fetch_assoc()) {
-				
-				echo "<div class=\"w-50 d-flex justify-content-center pb-5\">
-						<div class=\"card doctor-card\" style=\"width: 18rem;\">
-							<div class=\"justify-content-center d-flex\">
-								<img src=\"".getImg($row['imguid'],$row['gender'])."\" class=\"card-img-top rounded w-au w-50\" alt=\"" . $row['name'] . " " . $row['surname'] . "\">
-							</div>
-							<div class=\"card-body\">
-								<h5 class=\"card-title\">" . $row['name'] . " " . $row['surname'] . "</h5>
-								<p class=\"card-text\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
-								<p>Unvanı: " . $row['degree_name'] . "</p>
-							</div>
-						</div>
-					</div>";
-										//<a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>
-			}
-		} else {
-			echo "<div class='alert alert-warning w-100 mx-5' role='alert'>Uygun doktor bulunamadı.</div>"; //alert
-		}
+		$available_appointments = $database->query($sql);
 	}catch(Exception $e){
-		echo "
-			<div class=\"alert alert-danger w-100 mx-5\" role=\"alert\">
-				Bir şeyler yanlış gitti
-			</div>
-			";
-	}*/
-	die();
+		die();
+	}
+	
 }else if (isset($_GET['action']) && $_GET['action'] == "getappointment") {
-	// Şehirleri veritabanından al
-	$sql_citys = "SELECT * FROM citys";
-	$sql_doctor_specialtys= "select * from doctor_specialtys";
-	$citys = $database->query($sql_citys);
-	$doctor_specialtys = $database->query($sql_doctor_specialtys);
+
+	$appointmentid = $_GET["appointmentid"];
+	$sql = "INSERT INTO `das`.`appointments` (`take_date`, `payment`, `appointment_status_id`, `patients_id`, `appointment_times_id`) 
+									VALUES (NOW(), 0, '1', (SELECT patients.id FROM patients WHERE patients.email = '".$_SESSION[$session_text]."'), $appointmentid);
+";
+	try{
+		// Sorguyu çalıştır
+		$result = $database->query($sql);
+		echo "btn-success";
+	}catch(Exception $e){
+		echo "btn-danger";
+	}
+	die();
 }
 
 ?>
@@ -111,49 +82,44 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 				<div class="d-flex p-5 pb-0 border-bottom">
 					<h1>Randevu Al</h1>
 				</div>
-                <div >
-		            <div class="container my-2 px-5 border-bottom">
-                        <div class="row justify-content-center">
-                            <form action="submit.php" method="post">
-                                <div class="row">
-									<div class="form-group pb-3 d-flex flex-column col-sm">
-										<label for="city" class="ps-3">Şehir</label>
-										<select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="city" name="city" required>
-											<?php
-												echo "<option value=\"\" disabled selected>Şehir Seçiniz</option>";
-												if ($citys->num_rows > 0) {
-													while($row = $citys->fetch_assoc()) {
-														echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
-													}
-												} else {
-													echo "<option value='-1'>Veri bulunamadı</option>";
-												}
-											?>
-										</select>
-									</div>
-                                    <div class="form-group pb-3 px-3 d-flex flex-column col-sm">
-										<label for="doctor_specialty" class="ps-3">Uzmanlık Alanı</label>
-										<select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="doctor_specialty" name="doctor_specialty" required>
-											<?php
-												echo "<option value=\"\" disabled selected>Uzmanlık Alanı Seçiniz</option>";
-												if ($doctor_specialtys->num_rows > 0) {
-													while($row = $doctor_specialtys->fetch_assoc()) {
-														echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
-													}
-												} else {
-													echo "<option value='-1'>Veri bulunamadı</option>";
-												}
-											?>
-										</select>
-									</div>
-									<div class="form-group pb-3 px-3 d-flex flex-column col-sm text-center">
-										<button type="submit" class="btn btn-primary mt-3">Ara</button>
-									</div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-					<div id="query" class="d-flex flex-wrap py-4">
+                <div class="mb-5 mt-2 px-5 row justify-content-center">
+					<div class="col-5 d-flex justify-content-center pe-5 pt-3">
+						<div class="card doctor-card h-fc" style="width: 18rem;">
+							<div class="justify-content-center d-flex">
+								<img src="/img/m.png" class="card-img-top rounded w-au w-50" alt="Erkan HAZIR">
+							</div>
+							<div class="card-body">
+								<h5 class="card-title border-bottom">Erkan HAZIR</h5>
+								<p class="card-text">Uzmanlık Alanı: Genel Cerrahi</p>
+								<p class="card-text">Unvanı: Pratisyen Doktor</p>
+								<p class="card-text">En Yakın Randevu: 2024-04-04 14:56:00</p>
+							</div>
+						</div>
+					</div>
+					<div class="border-start col pb-4 pt-3">
+						<div class="border-bottom mx-3 w-100 px-5">
+							<h4 class="pb-2">Randevular</h4>
+						</div>
+						<div class="pt-3 px-5 w-100">
+							<?php
+								if ($available_appointments->num_rows > 0) {
+									while($row = $available_appointments->fetch_assoc()) {
+				
+										echo "
+											<div class=\"card doctor-card mb-3\" style=\"width: 100% !important;\">
+												<div class=\"card-body\">
+													<h5 class=\"card-title border-bottom\">".$row["date"]."</h5>
+													<p class=\"card-text\">Ücret: ".$row["price"]."₺</p>
+													<button type=\"button\" href=\"getdoctorappointments.php?action=getappointment&appointmentid=".$row["id"]."\" class=\"btn btn-primary w-100 text-light\">Randevuyu Al</button>
+												</div>
+											</div>";
+																//<a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>
+									}
+								} else {
+									echo "<div class='alert alert-warning w-100 mx-5' role='alert'>Bu doktorun alınabilecek randevusu bulunamamaktadır</div>"; //alert
+								}
+							?>
+						</div>
 					</div>
 		        </div>
 		    </div>
@@ -167,24 +133,21 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 		?>
 		<script>
 			$(document).ready(function () {
-				document.getElementById("query").innerHTML = "";
-				$("form").submit(function (event) {
-				let formData = {
-					city: $("#city").val(),
-					doctor_specialty: $("#doctor_specialty").val()
-				};
-
-				$.ajax({
-					type: "POST",
-					url: "doctors.php?action=search",
-					data: formData,
-					dataType: "text",
-					encode: true,
-				}).done(function (data) {
-					document.getElementById("query").innerHTML = data;
-				});
-
-				event.preventDefault();
+				$("button.btn.btn-primary.w-100.text-light").click(function() {
+					event.preventDefault();
+					let _button = this;
+					$.ajax({
+						type: "POST",
+						url: this.getAttribute("href"),
+						dataType: "text",
+						encode: true,
+					}).done(function (data) {
+						_button.className = "btn w-100 text-light";
+						_button.classList.add(data);
+						if(data=="btn-success"){
+							_button.setAttribute("disabled", true);
+						}
+					});
 				});
 			});
 		</script>

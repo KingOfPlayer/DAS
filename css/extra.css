@@ -43,6 +43,22 @@
     width: auto;
 }
 
+.w-20 {
+    width: 20% !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.h-fc{
+    height: fit-content;
+}
+
 .doctor-cards {
     display: flex;
     flex-wrap: wrap;
