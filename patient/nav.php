@@ -18,7 +18,12 @@
 				<nav class=\"navigation\">
 					<ul class=\"nav menu\">
 						<li><a href=\"./doctors.php\">Doktorlar</a></li>
-						<li ><a href=\"./appointments.php\">Randevularım</a></li>
+						<li><a href=\"#\">Randevular <i class=\"icofont-rounded-down\"></i></a>
+							<ul class=\"dropdown\">
+								<li><a href=\"./appointments.php\">Randevularım</a></li>
+								<li><a href=\"./getappointment.php\">Randevu Al</a></li>
+							</ul>
+						</li>
 				</nav>
 			</div>
 			<!--/ End Main Menu -->
