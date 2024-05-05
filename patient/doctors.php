@@ -6,6 +6,18 @@ include("../templates/logincheck.php");
 // Veritabanı bağlantısı
 include ('../database.php');
 
+function getImg($imguid,$gender){
+	if($imguid == NULL){
+		if($gender == 'E'){
+			return "/img/m.png";
+		}else{
+			return "/img/f.png";
+		}
+	}else{
+		return $imguid;
+	}
+}
+
 if (isset($_GET['action']) && $_GET['action'] == "search") {
 	
 	// Formdan gelen verileri al
@@ -35,20 +47,26 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 	
 			while($row = $result->fetch_assoc()) {
 				
-				echo "<div class=\"w-50 d-flex justify-content-center\">";
-					echo '<div class="doctor-card">';
-					echo "<p>" . $row['name'] . " " . $row['surname'] . "</p>";
-					echo "<p>Uzmanlık Alanı: " . $row['specialty_name'] . "</p>";
-					echo "<p>Unvanı: " . $row['degree_name'] . "</p>";
-					echo '</div>';
-				echo "<div>";
+				echo "<div class=\"w-50 d-flex justify-content-center pb-5\">
+						<div class=\"card doctor-card\" style=\"width: 18rem;\">
+							<div class=\"justify-content-center d-flex\">
+								<img src=\"".getImg($row['imguid'],$row['gender'])."\" class=\"card-img-top rounded w-au w-50\" alt=\"" . $row['name'] . " " . $row['surname'] . "\">
+							</div>
+							<div class=\"card-body\">
+								<h5 class=\"card-title\">" . $row['name'] . " " . $row['surname'] . "</h5>
+								<p class=\"card-text\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
+								<p>Unvanı: " . $row['degree_name'] . "</p>
+							</div>
+						</div>
+					</div>";
+										//<a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>
 			}
 		} else {
-			echo "<div class='alert alert-warning m-5' role='alert'>Uygun doktor bulunamadı.</div>"; //alert
+			echo "<div class='alert alert-warning w-100 mx-5' role='alert'>Uygun doktor bulunamadı.</div>"; //alert
 		}
 	}catch(Exception $e){
 		echo "
-			<div class=\"alert alert-danger mb-0\" role=\"alert\">
+			<div class=\"alert alert-danger w-100 mx-5\" role=\"alert\">
 				Bir şeyler yanlış gitti
 			</div>
 			";
@@ -89,18 +107,17 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
         <!-- End Nav -->
 
         <!--arama alanı -->
-
         <div class="container border-start border-end" style="display: flow-root;">
 		    <div class="my-5 px-5">
 				<div class="d-flex p-5 pb-0 border-bottom">
 					<h1>Doktrolar</h1>
 				</div>
                 <div >
-		            <div class="container my-2 border-bottom">
+		            <div class="container my-2 px-5 border-bottom">
                         <div class="row justify-content-center">
                             <form action="submit.php" method="post">
                                 <div class="row">
-									<div class="form-group pb-3 px-3 d-flex flex-column col-sm">
+									<div class="form-group pb-3 d-flex flex-column col-sm">
 										<label for="city" class="ps-3">Şehir</label>
 										<select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="city" name="city" required>
 											<?php
@@ -137,7 +154,7 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
                             </form>
                         </div>
                     </div>
-					<div id="query" class="d-flex flex-wrap">
+					<div id="query" class="d-flex flex-wrap py-4">
 					</div>
 		        </div>
 		    </div>
@@ -151,6 +168,7 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 		?>
 		<script>
 			$(document).ready(function () {
+				document.getElementById("query").innerHTML = "";
 				$("form").submit(function (event) {
 				let formData = {
 					city: $("#city").val(),

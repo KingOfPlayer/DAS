@@ -117,6 +117,7 @@ VALUES ('$date', '$price', '$online', '1', (SELECT das.doctors.id FROM das.docto
 		?>
 		<script>
 			$(document).ready(function () {
+				document.getElementById("msg").innerHTML = "";
 				$("form").submit(function (event) {
 				let date = new Date($("#date").val());
 

@@ -32,8 +32,6 @@
 				</div>
 				";
 		}catch(Exception $e){
-			echo $sql;
-			echo $e;
 			echo "
 				<div class=\"alert alert-danger mb-0\" role=\"alert\">
 					Bir şeyler yanlış gitti
@@ -134,14 +132,14 @@
 										</div>
 										<div class="px-3 pe-5 d-flex justify-content-center flex-column col-md-auto">
 											<div class="form-check">
-												<input class="form-check-input px-1" type="radio" name="gender" id="gender" value="E" checked>
-												<label class="form-check-label" for="gender">
+												<input class="form-check-input px-1" type="radio" name="gender" id="genderE" value="E" checked>
+												<label class="form-check-label" for="genderE">
 												Erkek
 												</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input px-1" type="radio" name="gender" id="gender" value="K">
-												<label class="form-check-label" for="gender">
+												<input class="form-check-input px-1" type="radio" name="gender" id="genderK" value="K">
+												<label class="form-check-label" for="genderK">
 												Kadın
 												</label>
 											</div>
@@ -201,6 +199,7 @@
 		?>
 		<script>
 			$(document).ready(function () {
+				document.getElementById("msg").innerHTML = "";
 				$("form").submit(function (event) {
 				let formData = {
 					name: $("#name").val(),
@@ -208,7 +207,7 @@
 					email: $("#email").val(),
 					password: $("#password").val(),
 					city: $("#city").val(),
-					gender: $("#gender").val(),
+					gender: $("input[type=radio]:checked").val(),
 					doctorspecialty: $("#doctorspecialty").val(),
 					doctordegree: $("#doctordegree").val(),
 					phone_number: $("#phone_number").val()

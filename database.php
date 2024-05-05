@@ -1,17 +1,18 @@
 <?php
+    if(!isset($servername)){
+        //Veritabanı Bilgisi
+        $servername = "localhost";
+        $username = "root";
+        $password_db = "1234";
+        $dbname = "DAS";
 
-    //Veritabanı Bilgisi
-    $servername = "localhost";
-    $username = "root";
-    $password_db = "1234";
-    $dbname = "DAS";
-
-    //Veritabını Değişkeni
-    $database = new mysqli($servername, $username, $password_db, $dbname);
+        //Veritabını Değişkeni
+        $database = new mysqli($servername, $username, $password_db, $dbname);
 
     
-    //Veritabanı Bağlantısı Kontrolü
-    if ($database->connect_error) {
-        die("Bağlantı hatası: " . $database->connect_error);
+        //Veritabanı Bağlantısı Kontrolü
+        if ($database->connect_error) {
+            die("Bağlantı hatası: " . $database->connect_error);
+        }
     }
 ?>

@@ -161,6 +161,7 @@
 			include("../templates/importjs.php");
 		?>
 		<script>
+			document.getElementById("msg").innerHTML = "";
 			$(document).ready(function () {
 				$("form").submit(function (event) {
 				let formData = {
