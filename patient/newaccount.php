@@ -116,7 +116,7 @@
 											  <label for="city" class="ps-3">Şehir</label>
 											  <select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="city" name="city">
 													<?php
-														echo "<option value='-1' disabled selected>Şehir Seçiniz</option>";
+														echo "<option value=\"\" disabled selected>Şehir Seçiniz</option>";
 														if ($citys->num_rows > 0) {
 															while($row = $citys->fetch_assoc()) {
 																echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";

@@ -121,7 +121,7 @@
 											  <label for="city" class="ps-3">Şehir</label>
 											  <select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="city" name="city">
 													<?php
-														echo "<option value='-1' disabled selected>Şehir Seçiniz</option>";
+														echo "<option value=\"\" disabled selected>Şehir Seçiniz</option>";
 														if ($citys->num_rows > 0) {
 															while($row = $citys->fetch_assoc()) {
 																echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
@@ -152,7 +152,7 @@
 											  <label for="doctor_specialty" class="ps-3">Uzmanlık Alanınız</label>
 											  <select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="doctorspecialty" name="doctorspecialty">
 													<?php
-														echo "<option value='-1' disabled selected>Uzmanlık Alanı Seçiniz</option>";
+														echo "<option value=\"\" disabled selected>Uzmanlık Alanı Seçiniz</option>";
 														if ($doctor_specialtys->num_rows > 0) {
 															while($row = $doctor_specialtys->fetch_assoc()) {
 																echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
@@ -169,7 +169,7 @@
 											  <label for="doctor_degree" class="ps-3">Ünvanınız</label>
 											  <select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="doctordegree" name="doctordegree">
 													<?php
-														echo "<option value='-1' disabled selected>Ünvanı Seçiniz</option>";
+														echo "<option value=\"\" disabled selected>Ünvanı Seçiniz</option>";
 														if ($doctor_degrees->num_rows > 0) {
 															while($row = $doctor_degrees->fetch_assoc()) {
 																echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";

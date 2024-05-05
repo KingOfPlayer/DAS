@@ -17,7 +17,7 @@
 			<div class=\"main-menu\">
 				<nav class=\"navigation\">
 					<ul class=\"nav menu\">
-						<li><a href=\"./başarılı.php\">Doktorlar</a></li>
+						<li><a href=\"./doctors.php\">Doktorlar</a></li>
 						<li ><a href=\"./appointments.php\">Randevularım</a></li>
 				</nav>
 			</div>
