@@ -57,10 +57,10 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 								<img src=\"".getImg($row['imguid'],$row['gender'])."\" class=\"card-img-top rounded w-au w-50\" alt=\"" . $row['name'] . " " . $row['surname'] . "\">
 							</div>
 							<div class=\"card-body\">
-								<h5 class=\"card-title\">" . $row['name'] . " " . $row['surname'] . "</h5>
+								<h5 class=\"card-title border-bottom\">" . $row['name'] . " " . $row['surname'] . "</h5>
 								<p class=\"card-text\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
 								<p>Unvanı: " . $row['degree_name'] . "</p>
-								<p>En Yakın Randevu : " . $row['nearest_date'] . "</p>
+								<p>En Yakın Randevu: " . $row['nearest_date'] . "</p>
 								<a href=\"#\" class=\"btn btn-primary w-100\">Randevu al</a>
 							</div>
 						</div>

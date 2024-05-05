@@ -145,7 +145,7 @@
 									<div id="msg" class="row pb-3 px-3">
 									</div>
 									
-									<div class="row pb-3 px-3 ">
+									<div class="row pb-3 px-3">
 										<button type="submit" class="btn btn-primary btn-block w-100">Giriş Yap</button>
 									</div>
 								</form>

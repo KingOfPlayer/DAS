@@ -59,8 +59,8 @@
 }
 
 .doctor-card p {
-    margin: 5px 0;
-    font-size: 16px;
+    margin: 2px 0;
+    font-size: 0.75rem;
 }
 
 $enable-negative-margins: true;
