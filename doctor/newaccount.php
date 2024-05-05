@@ -17,12 +17,13 @@
 		$city_id = $_POST['city'];
 		$doctor_specialty_id = $_POST['doctorspecialty'];
 		$doctor_degree_id = $_POST['doctordegree'];
+		$phone_number = $_POST['phone_number'];
 
 		include ('../database.php');
 
 		$sql = "INSERT INTO `das`.`doctors` 
-			(`name`, `surname`, `email`, `password`, `gender`, `city_id`, `doctor_specialty_id`, `doctor_degree_id`) VALUES 
-			('$name', '$surname', '$email', '$password', '$gender', $city_id, $doctor_specialty_id, $doctor_degree_id);";
+			(`name`, `surname`, `email`, `password`, `gender`, `city_id`, `doctor_specialty_id`, `doctor_degree_id`,`phone_number`) VALUES 
+			('$name', '$surname', '$email', '$password', '$gender', $city_id, $doctor_specialty_id, $doctor_degree_id,'$phone_number');";
 		try{
 			$result = $database->query($sql);
 			echo "
@@ -31,6 +32,8 @@
 				</div>
 				";
 		}catch(Exception $e){
+			echo $sql;
+			echo $e;
 			echo "
 				<div class=\"alert alert-danger mb-0\" role=\"alert\">
 					Bir şeyler yanlış gitti
@@ -90,11 +93,11 @@
 									<div class="row">
 										<div class="form-group pb-3 px-3 ps-3 col-sm">
 											<label for="name" class="ps-3">İsim</label>
-											<input type="text" class="form-control px-3" id="name" name="name" pattern="[A-Za-z]{3,15}" title="Sadece harf kullanın" required>
+											<input type="text" class="form-control px-3" id="name" name="name" pattern="[A-Z a-zıİşŞçÇöÖüÜ]{3,20}" title="Sadece harf kullanın" required>
 										</div>
 										<div class="form-group pb-3 px-3 ps-3 col-sm">
 											<label for="surname" class="ps-3">Soyisim</label>
-											<input type="text" class="form-control px-3" id="surname" name="surname" pattern="[A-Za-z]{3,15}" title="Sadece harf kullanın" required>
+											<input type="text" class="form-control px-3" id="surname" name="surname" pattern="[A-Z a-zıİşŞçÇöÖüÜ]{3,20}" title="Sadece harf kullanın" required>
 										</div>
 									</div>
 									<div class="row">
@@ -105,6 +108,12 @@
 										<div class="form-group pb-3 px-3 ps-3 col-sm">
 											<label for="password" class="ps-3">Şifre</label>
 											<input type="password" class="form-control px-3" id="password" name="password" required>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group pb-3 px-3 ps-3 col-sm">
+											<label for="phone_number" class="ps-3">Telefon Numarası</label>
+											<input type="text" class="form-control px-3" id="phone_number" name="phone_number" title="Telefon Numarası giriniz" pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}" required>
 										</div>
 									</div>
 									<div class="row">
@@ -201,7 +210,8 @@
 					city: $("#city").val(),
 					gender: $("#gender").val(),
 					doctorspecialty: $("#doctorspecialty").val(),
-					doctordegree: $("#doctordegree").val()
+					doctordegree: $("#doctordegree").val(),
+					phone_number: $("#phone_number").val(),
 				};
 
 				$.ajax({

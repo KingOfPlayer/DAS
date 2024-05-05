@@ -1,6 +1,6 @@
 <?php
 	// Eğer dosya doktor,hasta,admindeyse bunu ekle
-	$session_text = "d_email";
+	$session_text = "p_email";
 	$mode = 0;
 	$page = "index.php";
 	include("../templates/logincheck.php");

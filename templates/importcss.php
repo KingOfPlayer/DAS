@@ -14,10 +14,14 @@
         <link rel="icon" href="/img/favicon.png">
 		
 		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+		<link href="/css/google-fonts.css" rel="stylesheet">
+		<!-- Bootstrap Icons Font-->
+		<link href="/fonts/bootstrap-icons.woff2" rel="stylesheet">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<!-- Bootstrap Icons CSS -->
+		<link rel="stylesheet" href="/css/bootstrap-icons.min.css">
 		<!-- Nice Select CSS -->
 		<link rel="stylesheet" href="/css/nice-select.css">
 		<!-- Font Awesome CSS -->

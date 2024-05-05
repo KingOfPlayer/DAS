@@ -33,6 +33,11 @@
     line-height: 24px;
 }
 
+.table {
+    height: auto;
+    width: auto;
+}
+
 .doctor-cards {
     display: flex;
     flex-wrap: wrap;

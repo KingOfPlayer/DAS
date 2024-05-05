@@ -11,7 +11,13 @@
 			<div class=\"main-menu\">
 				<nav class=\"navigation\">
 					<ul class=\"nav menu\">
-						<li ><a href=\"./appointments.php\">Randevularım</a></li>
+						<li><a href=\"#\">Randevu <i class=\"icofont-rounded-down\"></i></a>
+							<ul class=\"dropdown\">
+								<li><a href=\"./appointments.php\">Aktif Randevularım</a></li>
+								<li><a href=\"./newappointment.php\">Yeni Randevu</a></li>
+							</ul>
+						</li>
+					</ul>
 				</nav>
 			</div>
 		");
