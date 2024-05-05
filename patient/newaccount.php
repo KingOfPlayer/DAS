@@ -15,12 +15,12 @@
 		$password = $_POST['password'];
 		$gender = $_POST['gender'];
 		$city_id = $_POST['city'];
+		$phone_number = $_POST['phone_number'];
 
 		include ('../database.php');
 
-		$sql = "INSERT INTO `das`.`patients` 
-			(`name`, `surname`, `email`, `password`, `gender`, `city_id`) VALUES 
-			('$name', '$surname', '$email', '$password', '$gender', $city_id);";
+		$sql = "INSERT INTO `das`.`patients` (`name`, `surname`, `email`, `password`, `gender`, `city_id`, `phone_number`)
+			VALUES ('$name', '$surname', '$email', '$password', '$gender', $city_id, $phone_number);";
 		try{
 			$result = $database->query($sql);
 			echo "
@@ -106,6 +106,12 @@
 										</div>
 									</div>
 									<div class="row">
+										<div class="form-group pb-3 px-3 ps-3 col-sm">
+											<label for="phone_number" class="ps-3">Telefon Numarası</label>
+											<input type="text" class="form-control px-3" id="phone_number" name="phone_number" title="Telefon Numarası giriniz" pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}" required>
+										</div>
+									</div>
+									<div class="row">
 										<div class="form-group pb-3 px-3 d-flex flex-column col-sm">
 											  <label for="city" class="ps-3">Şehir</label>
 											  <select class="d-flex align-items-center ps-3 mb-0" style="display: none !important;" id="city" name="city">
@@ -163,7 +169,8 @@
 					email: $("#email").val(),
 					password: $("#password").val(),
 					city: $("#city").val(),
-					gender: $("input[type=radio]:checked").val()
+					gender: $("input[type=radio]:checked").val(),
+					phone_number: $("#phone_number").val()
 				};
 
 				$.ajax({

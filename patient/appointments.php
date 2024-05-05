@@ -49,7 +49,7 @@ include("./nav.php");
                         // Veritabanı bağlantısı
                         include ('../database.php');
                         $email=$_SESSION['p_email'];
-                        $sql = "SELECT patients.name AS patient_name, appointments.id AS appointment_id, appointments.take_date, appointment_times.date, appointment_times.time,
+                        $sql = "SELECT patients.name AS patient_name, appointments.id AS appointment_id, appointments.take_date, appointment_times.date,
                 doctors.name AS doctor_name, doctor_specialtys.name AS specialty_name, citys.name AS city_name
         FROM patients
         INNER JOIN appointments ON patients.id = appointments.patients_id
@@ -68,7 +68,6 @@ include("./nav.php");
 								echo "<p>Hasta ismi: " . $row['patient_name'] . "</p>";
                                 echo "<p>Randevu numarası: " . $row['appointment_id'] . "</p>";
                                 echo "<p>Randevu tarihi: " . $row['date'] . "</p>";
-                                echo "<p>Randevu saati: " . $row['time'] . "</p>";
                                 echo "<p>Doktor ismi: " . $row['doctor_name'] . "</p>";
                                 echo "<p>Uzmanlık: " . $row['specialty_name'] . "</p>";
                                 echo "<p>Şehir: " . $row['city_name'] . "</p>";

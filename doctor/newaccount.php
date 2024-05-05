@@ -211,7 +211,7 @@
 					gender: $("#gender").val(),
 					doctorspecialty: $("#doctorspecialty").val(),
 					doctordegree: $("#doctordegree").val(),
-					phone_number: $("#phone_number").val(),
+					phone_number: $("#phone_number").val()
 				};
 
 				$.ajax({

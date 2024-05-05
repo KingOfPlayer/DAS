@@ -85,7 +85,6 @@ $result = $database->query($sql);
 
                                 echo "<h5 class='card-title border-bottom'>Hasta: " . $row['patient_name'] ." ".$row['patient_surname']. "</h5>";
                                     echo "<p class='card-text'>Randevu Tarihi: " . $row['date'] . "</p>";
-                                    echo "<p class='card-text'>Randevu Saati: " . $row['time'] . "</p>";
                                     // abi buraya hasta bilgisi ekleyelim mi boş duruyor çünkü bootstrap kullandım seni mi kıracağım 
                                 echo '</div>';
                             echo '</div>';
