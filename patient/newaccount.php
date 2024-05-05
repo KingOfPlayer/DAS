@@ -146,7 +146,7 @@
 									</div>
 									
 									<div class="row pb-3 px-3">
-										<button type="submit" class="btn btn-primary btn-block w-100">Giriş Yap</button>
+										<button type="submit" class="btn btn-primary btn-block w-100">Kayıt Ol</button>
 									</div>
 								</form>
 							</div>
