@@ -53,9 +53,11 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 								<img src=\"".getImg($row['imguid'],$row['gender'])."\" class=\"card-img-top rounded w-au w-50\" alt=\"" . $row['name'] . " " . $row['surname'] . "\">
 							</div>
 							<div class=\"card-body\">
-								<h5 class=\"card-title border-bottom\">" . $row['name'] . " " . $row['surname'] . "</h5>
-								<p class=\"card-text\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
-								<p>Unvanı: " . $row['degree_name'] . "</p>
+								<h5 class=\"card-title border-bottom px-3\">" . $row['name'] . " " . $row['surname'] . "</h5>
+								<p class=\"card-text px-2\">Uzmanlık Alanı: " . $row['specialty_name'] . "</p>
+								<p class=\"card-text px-2\">Unvanı: " . $row['degree_name'] . "</p>
+								<p class=\"card-text px-2\">E-posta: " . $row['email'] . "</p>
+								<p class=\"card-text px-2\">Telefon Numarası: " . $row['phone_number'] . "</p>
 							</div>
 						</div>
 					</div>";

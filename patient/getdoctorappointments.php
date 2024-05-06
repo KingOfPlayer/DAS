@@ -18,19 +18,28 @@ function getImg($imguid,$gender){
 	}
 }
 
+function boolToElement($bool,$true_element,$false_element){
+    if($bool==1){
+        return $true_element;
+    }else{
+        return $false_element;
+    }
+}
+
 if (isset($_GET['action']) && $_GET['action'] == "search") {
 	
-	echo var_dump($_GET);
-
 	$id = $_GET["id"];
 
 	// Sorguyu hazırla
-	$sql = "SELECT * FROM das.available_appointments WHERE doctor_id = $id";
+	$sql_available_appointments = "SELECT * FROM das.available_appointments WHERE doctor_id = $id";
+	$sql_doctor = "SELECT * FROM doctors_infos WHERE id = $id";
 
 	try{
 		// Sorguyu çalıştır
-		$available_appointments = $database->query($sql);
+		$available_appointments = $database->query($sql_available_appointments);
+		$doctor= $database->query($sql_doctor);
 	}catch(Exception $e){
+		echo $e;
 		die();
 	}
 	
@@ -39,13 +48,13 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 	$appointmentid = $_GET["appointmentid"];
 	$sql = "INSERT INTO `das`.`appointments` (`take_date`, `payment`, `appointment_status_id`, `patients_id`, `appointment_times_id`) 
 									VALUES (NOW(), 0, '1', (SELECT patients.id FROM patients WHERE patients.email = '".$_SESSION[$session_text]."'), $appointmentid);
-";
+	";
 	try{
 		// Sorguyu çalıştır
 		$result = $database->query($sql);
-		echo "btn-success";
+		echo "1";
 	}catch(Exception $e){
-		echo "btn-danger";
+		echo "0";
 	}
 	die();
 }
@@ -84,17 +93,26 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 				</div>
                 <div class="mb-5 mt-2 px-5 row justify-content-center">
 					<div class="col-5 d-flex justify-content-center pe-5 pt-3">
-						<div class="card doctor-card h-fc" style="width: 18rem;">
-							<div class="justify-content-center d-flex">
-								<img src="/img/m.png" class="card-img-top rounded w-au w-50" alt="Erkan HAZIR">
-							</div>
-							<div class="card-body">
-								<h5 class="card-title border-bottom">Erkan HAZIR</h5>
-								<p class="card-text">Uzmanlık Alanı: Genel Cerrahi</p>
-								<p class="card-text">Unvanı: Pratisyen Doktor</p>
-								<p class="card-text">En Yakın Randevu: 2024-04-04 14:56:00</p>
-							</div>
-						</div>
+						<?php
+						if ($doctor->num_rows > 0) {
+	
+							while($row = $doctor->fetch_assoc()) {
+								echo "<div class=\"card doctor-card h-fc\" style=\"width: 100% !important;\">
+									<div class=\"justify-content-center d-flex\">
+										<img src=\"".getImg($row['imguid'],$row['gender'])."\" class=\"card-img-top rounded w-au w-50\" alt=\"" . $row['name'] . " " . $row['surname'] . "\">
+									</div>
+									<div class=\"card-body\">
+										<h5 class=\"card-title border-bottom px-3\">" . $row['name'] . " " . $row['surname'] . "</h5>
+										<p class=\"card-text px-2\">Uzmanlık Alanı: " . $row['doctor_specialty'] . "</p>
+										<p class=\"card-text px-2\">Unvanı: " . $row['doctor_degree'] . "</p>
+										<p class=\"card-text px-2\">Bulunduğu Şehir: " . $row['city'] . "</p>
+										<p class=\"card-text px-2\">E-posta: " . $row['email'] . "</p>
+										<p class=\"card-text px-2\">Telefon Numarası: " . $row['phone_number'] . "</p>
+									</div>
+								</div>";			
+							}
+						}
+						?>
 					</div>
 					<div class="border-start col pb-4 pt-3">
 						<div class="border-bottom mx-3 w-100 px-5">
@@ -108,8 +126,9 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 										echo "
 											<div class=\"card doctor-card mb-3\" style=\"width: 100% !important;\">
 												<div class=\"card-body\">
-													<h5 class=\"card-title border-bottom\">".$row["date"]."</h5>
-													<p class=\"card-text\">Ücret: ".$row["price"]."₺</p>
+													<h5 class=\"card-title border-bottom px-3\">".$row["date"]."</h5>
+													<p class=\"card-text\ px-2\">Randevu tipi: ".boolToElement($row['online'],"Uzaktan","Yüzyüze")."₺</p>
+													<p class=\"card-text\ px-2\">Ücret: ".$row["price"]."₺</p>
 													<button type=\"button\" href=\"getdoctorappointments.php?action=getappointment&appointmentid=".$row["id"]."\" class=\"btn btn-primary w-100 text-light\">Randevuyu Al</button>
 												</div>
 											</div>";
@@ -143,9 +162,11 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 						encode: true,
 					}).done(function (data) {
 						_button.className = "btn w-100 text-light";
-						_button.classList.add(data);
-						if(data=="btn-success"){
+						if(data=="1"){
+							_button.classList.add("btn-success");
 							_button.setAttribute("disabled", true);
+						}else{
+							_button.classList.add("btn-danger");
 						}
 					});
 				});

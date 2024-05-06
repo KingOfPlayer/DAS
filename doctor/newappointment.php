@@ -101,7 +101,7 @@ VALUES ('$date', '$price', '$online', '1', (SELECT das.doctors.id FROM das.docto
 									</div>
 									
 									<div class="row pb-3 px-3">
-										<button type="submit" class="pb-3 mx-0 btn btn-primary btn-block w-100">Giriş Yap</button>
+										<button type="submit" class="pb-3 mx-0 btn btn-primary btn-block w-100">Oluştur</button>
 									</div>
 								</form>
 							</div>

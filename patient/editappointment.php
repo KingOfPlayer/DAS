@@ -3,6 +3,7 @@
 $session_text = "p_email";
 include("../templates/logincheck.php");
 
+echo var_dump($_GET);
 ?>
 
 <!doctype html>
