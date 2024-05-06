@@ -10,8 +10,16 @@ $email=$_SESSION[$session_text];
 if (isset($_GET['action']) && $_GET['action'] == "edit") {
 	
     $id=$_GET['appointment_id'];
+    $type=$_GET['type'];
 
-    echo "2";
+    $sql = "UPDATE `das`.`appointments` SET `appointment_status_id` = '$type' WHERE (`id` = '$id');";
+    try{
+		// Sorguyu çalıştır
+		$result = $database->query($sql);
+        echo "1";
+	}catch(Exception $e){
+        echo "0";
+	}
 	die();
 }else{
 	// Şehirleri veritabanından al
@@ -123,7 +131,7 @@ function boolToElement($bool,$true_element,$false_element){
                                     echo "<p class=\"px-2 my-1\">Şehir: " . $row['city_name'] . "</p>";
                                 }
                                 if($row['appointment_status_id']==1){
-                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&appointment_id=".$row['appointment_id']."\" class=\"btn btn-primary w-100 text-light\">Randevuyu İptal Et</button>";
+                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&type=4&appointment_id=".$row['appointment_id']."\" class=\"btn btn-primary w-100 text-light\">Randevuyu İptal Et</button>";
                                 }else if($row['appointment_status_id']==2){
                                     echo "<p class=\"px-2 my-1 text-success\">Randevu Gerçekleşti</p>";
                                 }else if($row['appointment_status_id']==3){
@@ -163,7 +171,7 @@ function boolToElement($bool,$true_element,$false_element){
 					    _button.className = "btn w-100 text-light";
 					    if(data=="1"){
 						    _button.classList.add("btn-success");
-						    //_button.setAttribute("disabled", true);
+						    _button.setAttribute("disabled", true);
 					    }else{
 						    _button.classList.add("btn-danger");
 					    }

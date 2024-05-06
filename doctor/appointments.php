@@ -9,6 +9,25 @@ include ('../database.php');
 // Doktor ID'sini al (Örneğin, $_GET veya $_POST ile)
 $email = $_SESSION['d_email']; // Örnek olarak POST kullanıldı, gerektiğinde değiştirilebilir.
 
+if (isset($_GET['action']) && $_GET['action'] == "edit") {
+	
+    $appointment_id=$_GET['appointment_id'];
+    $appointment_time_id=$_GET['appointment_time_id'];
+    $type=$_GET['type'];
+
+    if($type == 2 || $type == 3){
+        $sql = "UPDATE `das`.`appointments` SET `appointment_status_id` = '$type' WHERE (`id` = '$appointment_id');";
+    }else{
+        $sql = "UPDATE `das`.`appointment_times` SET `active` = '0' WHERE (`id` = '$appointment_time_id');";
+    }
+    try{
+		$result = $database->query($sql);
+        echo "1";
+	}catch(Exception $e){
+        echo "0";
+	}
+	die();
+}else{
 // Sorguyu hazırla
  $sql = "SELECT 
     das.patients.name AS patient_name,
@@ -18,6 +37,7 @@ $email = $_SESSION['d_email']; // Örnek olarak POST kullanıldı, gerektiğinde
     das.appointments.id AS appointment_id,
     das.appointment_status.id AS appointment_status_id,
     das.appointment_times.id,
+    das.appointment_times.active,
     das.appointment_times.date,
     das.appointment_times.online,
     patients.surname AS patient_surname
@@ -37,10 +57,9 @@ FROM
     appointment_status ON appointments.appointment_status_id = appointment_status.id
 		WHERE
 	das.doctors.email = '$email'";
-
-// Sorguyu çalıştır
-$result = $database->query($sql);
-
+    // Sorguyu çalıştır
+    $result = $database->query($sql);
+}
     
 function boolToElement($bool,$true_element,$false_element){
     if($bool==1){
@@ -85,27 +104,11 @@ function boolToElement($bool,$true_element,$false_element){
                     if ($result->num_rows > 0) {
                         // Randevuları kartlar içinde göster
                         while($row = $result->fetch_assoc()) {
-                            /*echo '<div class="card mb-2">';
-                                echo '<div class="card-body">';
-
-                                echo "<h5 class='card-title border-bottom'>Hasta: " . $row['patient_name'] ." ".$row['patient_surname']. "</h5>";
-                                    echo "<p class='card-text'>Randevu Tarihi: " . $row['date'] . "</p>";
-                                    // abi buraya hasta bilgisi ekleyelim mi boş duruyor çünkü bootstrap kullandım seni mi kıracağım 
-                                echo '</div>';
-                            echo '</div>';*/
-                            /*
-                            echo "<div class=\"alert alert-primary m-3\" role=\"alert\">";
-                                echo "<h3 class=\"border-bottom border-primary px-4\">Randevu Tarihi: " . $row['date'] . "</h3>";
-                                echo "<p class=\"px-2 my-1\">Hasta Adı: " . $row['patient_name'] ." ".$row['patient_surname']. "</p>";
-                                echo "<p class=\"px-2 my-1\">Randevu tipi: " . boolToElement($row['online'],"Uzaktan","Yüzyüze") . "</p>";
-                                echo "<p class=\"px-2 my-1\">Randevuyu aldığı tarih: " . $row['take_date'] . "</p>";
-                                echo "<p class=\"px-2 my-1\">E-posta: " . $row['patient_email'] . "</p>";
-                                echo "<p class=\"px-2 my-1\">Telefon Numarası: " . $row['patient_phone_number'] . "</p>";
-						        echo "<a href=\"editappointment.php?action=edit&id=".$row['id']."\" class=\"btn btn-primary w-100 text-light\">Randevuyu değiştir</a>";
-                            echo " </div>";*/
 
                             $alert_type = "";
-                            if($row['appointment_status_id']==1){
+                            if($row['active']==0){
+                                $alert_type = "alert-primary";
+                            }else if($row['appointment_status_id']==1){
                                 $alert_type = "alert-primary";
                             }else if($row['appointment_status_id']==2){
                                 $alert_type = "alert-success";
@@ -119,13 +122,20 @@ function boolToElement($bool,$true_element,$false_element){
 
                             echo "<div class=\"alert $alert_type m-3\" role=\"alert\">";
                                 echo "<h3 class=\"border-bottom border-primary px-4\">Randevu Tarihi: " . $row['date'] . "</h3>";
-                                echo "<p class=\"px-2 my-1\">Hasta Adı: " . $row['patient_name'] ." ".$row['patient_surname']. "</p>";
+                                echo "<p class=\"px-2 my-1\">Randevu numarası: " . $row['appointment_id'] . "</p>";
+                                echo "<p class=\"px-2 my-1\">Hasta adı: " . $row['patient_name'] ." ".$row['patient_surname']. "</p>";
                                 echo "<p class=\"px-2 my-1\">Randevu tipi: " . boolToElement($row['online'],"Uzaktan","Yüzyüze") . "</p>";
                                 echo "<p class=\"px-2 my-1\">Randevuyu aldığı tarih: " . $row['take_date'] . "</p>";
                                 echo "<p class=\"px-2 my-1\">E-posta: " . $row['patient_email'] . "</p>";
                                 echo "<p class=\"px-2 my-1\">Telefon Numarası: " . $row['patient_phone_number'] . "</p>";
-                                if($row['appointment_status_id']==1){
-                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&appointment_id=".$row['appointment_id']."\" class=\"btn btn-primary w-100 text-light\">Randevuyu İptal Et</button>";
+                                if($row['active']==0){
+                                    echo "<p class=\"px-2 my-1 text-info\">İptal Etiniz</p>";
+                                }else if($row['appointment_status_id']==1){
+                                    echo "<div class=\"row px-3\">";
+                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&type=4&appointment_id=".$row['appointment_id']."&appointment_time_id=".$row['id']."\" class=\"btn btn-primary col-sm text-light mx-2\">Randevuyu İptal Et</button>";
+                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&type=2&appointment_id=".$row['appointment_id']."&appointment_time_id=\" class=\"btn btn-primary col-sm text-light mx-2\">Randevu Gerçekleşti Olarak Değiştir</button>";
+                                    echo "<button type=\"button\" href=\"appointments.php?action=edit&type=3&appointment_id=".$row['appointment_id']."&appointment_time_id=\" class=\"btn btn-primary col-sm text-light mx-2\">Randevu Gerçekleşmedi Olarak Değiştir</button>";
+                                    echo "</div>";
                                 }else if($row['appointment_status_id']==2){
                                     echo "<p class=\"px-2 my-1 text-success\">Randevu Gerçekleşti</p>";
                                 }else if($row['appointment_status_id']==3){
@@ -152,5 +162,27 @@ function boolToElement($bool,$true_element,$false_element){
 			include("../templates/importfooter.php");
 			include("../templates/importjs.php");
 		?>
+	    <script>
+		    $(document).ready(function () {
+			    $("button.btn.btn-primary.col-sm.text-light.mx-2").click(function() {
+				    event.preventDefault();
+				    let _button = this;
+				    $.ajax({
+					    type: "POST",
+					    url: this.getAttribute("href"),
+					    dataType: "text",
+					    encode: true,
+				    }).done(function (data) {
+					    _button.className = "btn btn-primary col-sm text-light mx-2";
+					    if(data=="1"){
+						    _button.classList.add("btn-success");
+						    _button.setAttribute("disabled", true);
+					    }else{
+						    _button.classList.add("btn-danger");
+					    }
+				    });
+			    });
+		    });
+	    </script>
     </body>
 </html>
