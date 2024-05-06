@@ -36,7 +36,7 @@ This initiative facilitates online appointment requests for clients or patients 
 1. Open your XAMPP Control Panel and start Apache .
 2. Extract the downloaded source code zip file.
 3. Copy the extracted source code folder and paste it into the XAMPP's "htdocs" directory.
-4. Enter the database link information to database.php
+4. Enter the database information to database.php
 5. Open in mwb file in mysql_files forward engineering to mysql server this will create tables and Databases named DAS 
 6. Don't forget to select inserts and use scripts belongs to workbench when forward engineering.
 7. Browse the Doctor's Appointment Systsem in a browser. i.e. http://localhost/index.php/.
