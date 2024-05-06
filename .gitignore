@@ -2,3 +2,4 @@
 /.vs
 *.bak
 /test
+/doctor/profile-imgs/*.png

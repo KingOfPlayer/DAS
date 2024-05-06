@@ -14,7 +14,7 @@ function getImg($imguid,$gender){
 			return "/img/f.png";
 		}
 	}else{
-		return $imguid;
+		return "/doctor/profile-imgs/$imguid";
 	}
 }
 
@@ -127,7 +127,7 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
 											<div class=\"card doctor-card mb-3\" style=\"width: 100% !important;\">
 												<div class=\"card-body\">
 													<h5 class=\"card-title border-bottom px-3\">".$row["date"]."</h5>
-													<p class=\"card-text\ px-2\">Randevu tipi: ".boolToElement($row['online'],"Uzaktan","Yüzyüze")."₺</p>
+													<p class=\"card-text\ px-2\">Randevu tipi: ".boolToElement($row['online'],"Uzaktan","Yüzyüze")."</p>
 													<p class=\"card-text\ px-2\">Ücret: ".$row["price"]."₺</p>
 													<button type=\"button\" href=\"getdoctorappointments.php?action=getappointment&appointmentid=".$row["id"]."\" class=\"btn btn-primary w-100 text-light\">Randevuyu Al</button>
 												</div>

@@ -14,7 +14,7 @@ function getImg($imguid,$gender){
 			return "/img/f.png";
 		}
 	}else{
-		return $imguid;
+		return "/doctor/profile-imgs/$imguid";
 	}
 }
 
