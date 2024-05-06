@@ -15,6 +15,7 @@ $email = $_SESSION['d_email']; // Örnek olarak POST kullanıldı, gerektiğinde
     das.patients.email AS patient_email,
     das.patients.phone_number AS patient_phone_number,
     das.appointments.take_date,
+    das.appointments.id AS appointment_id,
     das.appointment_status.id AS appointment_status_id,
     das.appointment_times.id,
     das.appointment_times.date,
@@ -32,7 +33,7 @@ FROM
     das.citys as doctors_city ON das.doctors.city_id = doctors_city.id
         LEFT JOIN
     das.citys as patients_city ON das.patients.city_id = patients_city.id
-        INNER JOIN
+        LEFT JOIN
     appointment_status ON appointments.appointment_status_id = appointment_status.id
 		WHERE
 	das.doctors.email = '$email'";
@@ -112,6 +113,8 @@ function boolToElement($bool,$true_element,$false_element){
                                 $alert_type = "alert-secondary";
                             }else if($row['appointment_status_id']==4){
                                 $alert_type = "alert-warning";
+                            }else{
+                                $alert_type = "alert-info";
                             }
 
                             echo "<div class=\"alert $alert_type m-3\" role=\"alert\">";
@@ -129,6 +132,8 @@ function boolToElement($bool,$true_element,$false_element){
                                     echo "<p class=\"px-2 my-1 text-secondary\">Randevu Gerçekleşmedi</p>";
                                 }else if($row['appointment_status_id']==4){
                                     echo "<p class=\"px-2 my-1 text-warning\">Randevu İptal</p>";
+                                }else{
+                                    echo "<p class=\"px-2 my-1 text-info\">Henüz Randevuyu alan yok</p>";
                                 }
 						     echo " </div>";
                         }
