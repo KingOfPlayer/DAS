@@ -34,7 +34,7 @@
 		}catch(Exception $e){
 			echo "
 				<div class=\"alert alert-danger mb-0\" role=\"alert\">
-					Bir şeyler yanlış gitti
+					Bu mail kullanılmakta
 				</div>
 				";
 		}

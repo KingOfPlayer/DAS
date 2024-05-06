@@ -120,7 +120,7 @@ function boolToElement($bool,$true_element,$false_element){
                             }else if($row['appointment_status_id']==4){
                                 $alert_type = "alert-warning";
                             }
-
+                            
                             echo "<div class=\"alert $alert_type m-3\" role=\"alert\">";
                                 echo "<h3 class=\"border-bottom border-primary px-4\">Randevu Tarihi: " . $row['date'] . "</h3>";
                                 echo "<p class=\"px-2 my-1\">Randevu numarası: " . $row['appointment_id'] . "</p>";
@@ -143,10 +143,9 @@ function boolToElement($bool,$true_element,$false_element){
                         }
                     } else {
                         // Kayıt bulunamadı
-                        echo "<p>Randevu kaydınız bulunamadı.</p>";
-                        echo "<div>";
-                        echo "<a href='getappointment.php' class='btn'>Randevu Alın </a>";
-                        echo " </div>";
+                            echo "<div class=\"alert alert-warning m-3\" role=\"alert\">";
+                                echo "<p>Randevu kaydınız bulunamadı.</p>";
+						    echo " </div>";
                     }
                     ?>
                 </div>
