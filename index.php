@@ -107,12 +107,12 @@
 										<i class="icofont-ui-clock"></i>
 									</div>
 									<div class="single-content">
-										<span>ayarlanacak!!!!!</span>
+										
 										<h4>açılış saatleri</h4>
 										<ul class="time-sidual">
-											<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-											<li class="day">Saturday <span>9.00-18.30</span></li>
-											<li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+											<li class="day">pazartesi - cuma <span>8.00-20.00</span></li>
+											<li class="day">cumartesi<span>9.00-18.30</span></li>
+											<li class="day">pazar - perşembe <span>9.00-15.00</span></li>
 										</ul>
 										<a href="#">daha fazla<i class="fa fa-long-arrow-right"></i></a>
 									</div>
