@@ -23,11 +23,10 @@ VALUES ('$date', '$price', '$online', '1', (SELECT das.doctors.id FROM das.docto
 				</div>
 				";
 		}catch(Exception $e){
-			echo $e;
-			echo $date;
+
 			echo "
 				<div class=\"alert alert-danger mb-0\" role=\"alert\">
-					Bir şeyler yanlış gitti
+					böyle bir randevu zaten mevcut 
 				</div>
 				";
 		}
