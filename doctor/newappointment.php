@@ -10,8 +10,17 @@
 		$date = $_POST['date'];
 		$price = $_POST['price'];
 		$online = $_POST['online'];
-		
+		$todays_date=strtotime(date("Y-m-d"));
+		$config_date=strtotime($_POST['date']);
 		include ('../database.php');
+		if($todays_date>$config_date){
+			echo "
+				<div class=\"alert alert-danger mb-0\" role=\"alert\">
+					hatalı tarih girdiniz bu tarih geçti
+				</div>
+				";
+				die();
+		}
 
 		$sql = "INSERT INTO `das`.`appointment_times` (`date`, `price`, `online`, `active`, `doctor_id`) 
 VALUES ('$date', '$price', '$online', '1', (SELECT das.doctors.id FROM das.doctors WHERE das.doctors.email = '".$_SESSION[$session_text]."'));";
@@ -23,11 +32,10 @@ VALUES ('$date', '$price', '$online', '1', (SELECT das.doctors.id FROM das.docto
 				</div>
 				";
 		}catch(Exception $e){
-			echo $e;
-			echo $date;
+
 			echo "
 				<div class=\"alert alert-danger mb-0\" role=\"alert\">
-					Bir şeyler yanlış gitti
+					böyle bir randevu zaten mevcut 
 				</div>
 				";
 		}

@@ -22,7 +22,7 @@
 						</div>
 						<div class="col-lg-3 col-md-6 col-12">
 							<div class="single-footer f-link">
-								<h2>Quick Links</h2>
+								<h2>Hızlı Bağlantılar</h2>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12">
 										<ul>
@@ -48,11 +48,11 @@
 						<div class="col-lg-3 col-md-6 col-12">
 							<div class="single-footer">
 								<h2>açık saatler</h2>
-								<p>ayarlanacak!!!!</p>
+								
 								<ul class="time-sidual">
-									<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-									<li class="day">Saturday <span>9.00-18.30</span></li>
-									<li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+								             <li class="day">pazartesi - cuma <span>8.00-20.00</span></li>
+											<li class="day">cumartesi<span>9.00-18.30</span></li>
+											<li class="day">pazar - perşembe <span>9.00-15.00</span></li>
 								</ul>
 							</div>
 						</div>
