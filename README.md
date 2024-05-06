@@ -23,6 +23,7 @@ This initiative facilitates online appointment requests for clients or patients 
   - Create accounts themslves
   - View their old booking
   -search compatible doctors for needings 
+  - edit account settings
     
 
  
